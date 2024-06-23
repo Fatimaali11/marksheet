@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet</title>
+    <link rel="stylesheet" href="./style.css">
+    <div class="container-marksheet">
+        <div class="main">
+            <div class="content">
+                <h2><u>MarkSheet:</u></h2>
+
+                <input type="number" placeholder="Enter English Marks " id="eng">
+                <input type="number" placeholder="Enter Maths Marks " id="maths">
+            <input type="number" placeholder="Enter Physics Marks " id="phy">
+                <button onclick="result()">Click to Show Result</button>
+                <button class="reload" onclick="reload()">Reload</button>
+                <div class="data">
+                    <h3>Total Marks = 300</h3>
+                    <h3>Obtained Marks = <span id="obt"></span></h3>
+                    <h3>Percentage = <span id="per"></span>%</h3>
+                    <h3 class="grade">Grade = <span id="grade"></span></h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+
+ 
+
+
+
+    <script>
+        const totalMarks = 200;
+// Array of Objects
+const students = [
+  {
+    name: "Ali",
+    scienceMarks: 90,
+    englishMarks: 70,
+  },
+  {
+    name: "Huzaifa",
+    scienceMarks: 10,
+    englishMarks: 40,
+  },
+  {
+    name: "Asim",
+    scienceMarks: 40,
+    englishMarks: 60,
+  },
+];
+
+function calculateMarks(student) {
+  const total = student.scienceMarks + student.englishMarks;
+  const percentage = (total / totalMarks) * 100;
+  return { percentage, total };
+}
+
+let output = "";
+
+for (let index = 0; index < students.length; index++) {
+  const result = calculateMarks(students[index]);
+  output += "-------------------------------------<br>";
+  output += "-------------------------------------<br>";
+  output += "Name: " + students[index].name + "<br>";
+  output += "Science: " + students[index].scienceMarks + "<br>";
+  output += "English: " + students[index].englishMarks + "<br>";
+  output += "Total Marks: " + result.total + "<br>";
+  output += "Percentage: " + result.percentage.toFixed(2) + "<br>";
+  output += result.percentage >= 40 ? "PASSED" : "FAILED";
+  output += "<br><br>";
+}
+
+document.write(output);
+    </script>
+    <script src="./app.js"></script>
+  </body>
+</html>
